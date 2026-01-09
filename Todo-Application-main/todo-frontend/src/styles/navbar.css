@@ -1,0 +1,44 @@
+.navbar {
+  height: 64px;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.nav-links li:hover,
+.nav-links .active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.logout-btn {
+  background: #ef4444;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
