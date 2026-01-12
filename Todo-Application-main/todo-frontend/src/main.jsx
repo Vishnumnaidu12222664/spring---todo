@@ -7,7 +7,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <GoogleOAuthProvider
-      clientId="738465321366-1gtq2hme9sdutg6qm4qnpoq7r1654en9.apps.googleusercontent.com"
+      clientId="60270378822-a6fo654j5bkgo8hev8nregsbc55kl9lt.apps.googleusercontent.com"
       disableOneTap   
     >
       <App />

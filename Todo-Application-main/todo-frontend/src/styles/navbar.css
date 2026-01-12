@@ -38,6 +38,14 @@
   color: white;
   cursor: pointer;
 }
+.priority-filter {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
 
 .logout-btn:hover {
   background: #dc2626;

@@ -11,6 +11,8 @@ export default function Dashboard() {
   const [deadline, setDeadline] = useState("");
   const [priority, setPriority] = useState("NORMAL");
   const [status, setStatus] = useState("NOT_STARTED");
+  
+  const [activeTab, setActiveTab] = useState("DASHBOARD");
 
   const [activeStatus, setActiveStatus] = useState("ALL");
   const [activePriority, setActivePriority] = useState("ALL");
@@ -68,12 +70,30 @@ export default function Dashboard() {
     fetchTodos();
   };
 
+  // const filteredTodos = todos.filter((todo) => {
+  //   if (activeStatus !== "ALL" && todo.status !== activeStatus) return false;
+  //   if (activePriority !== "ALL" && todo.priority !== activePriority)
+  //     return false;
+  //   return true;
+  // });
+
   const filteredTodos = todos.filter((todo) => {
-    if (activeStatus !== "ALL" && todo.status !== activeStatus) return false;
-    if (activePriority !== "ALL" && todo.priority !== activePriority)
-      return false;
-    return true;
-  });
+  // TAB FILTER
+  if (activeTab === "MY_TASKS") {
+    if (todo.status === "DONE") return false;
+  }
+
+  if (activeTab === "COMPLETED") {
+    if (todo.status !== "DONE") return false;
+  }
+
+  // PRIORITY FILTER
+  if (activePriority !== "ALL" && todo.priority !== activePriority)
+    return false;
+
+  return true;
+});
+
 
   const stats = {
     done: todos.filter((t) => t.status === "DONE").length,
@@ -85,7 +105,20 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      {/* <Navbar
+  activePriority={activePriority}
+  setActivePriority={setActivePriority}
+/> */}
+
+<Navbar
+  activePriority={activePriority}
+  setActivePriority={setActivePriority}
+  activeTab={activeTab}
+  setActiveTab={setActiveTab}
+/>
+
+
 
       <main className="dashboard-main">
         <h2 className="page-title">Your Tasks</h2>

@@ -70,22 +70,28 @@ export default function Login() {
             <span>OR</span>
           </div>
 
-          {/* GOOGLE LOGIN */}
+          {/* ✅ Google Login */}
           <div className="google-wrapper">
             <GoogleLogin
-              onSuccess={async (credentialResponse) => {
+              onSuccess={async (res) => {
+                if (!res.credential) {
+                  alert("Google did not return token");
+                  return;
+                }
+
                 try {
-                  const res = await api.post("/auth/google", {
-                    token: credentialResponse.credential, //  ID TOKEN
+                  const backendRes = await api.post("/auth/google", {
+                    token: res.credential,
                   });
-                  localStorage.setItem("token", res.data.token);
+
+                  localStorage.setItem("token", backendRes.data.token);
                   navigate("/dashboard");
-                } catch {
-                  alert("Google login failed");
+                } catch (e) {
+                  alert("Backend Google login failed");
                 }
               }}
               onError={() => alert("Google login failed")}
-              useOneTap={false} //  no auto popup
+              useOneTap={false}
             />
           </div>
         </div>
